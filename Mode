@@ -1,0 +1,22 @@
+#mode
+l <- scan()
+v <- vector()
+n=length(l)
+for(i in 1:(n-1)){
+    v[i] <- 1
+    for(j in (i+1):n){
+        if(l[i]==l[j]){
+            v[i] <- v[i]+1
+        }
+    }
+}
+max <- v[1]
+pos <- 1
+for(i in 2:n-1)
+{
+    if(max < v[i]){
+        max=v[i]
+        pos=i
+    }
+}
+print(l[pos])
