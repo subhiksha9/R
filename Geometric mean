@@ -1,0 +1,8 @@
+x <- scan()
+n <- length(x)
+m <- 1
+for(i in x){
+  m <- m*i
+}
+Geometric=m**(1/n)
+print(paste("Geometric mean :",Geometric))
