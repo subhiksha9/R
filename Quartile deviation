@@ -1,0 +1,66 @@
+#Quatile deviation
+print("enter data")
+n <- scan()
+for(i in 1:(length(n)-1)){
+  for(j in (i+1):length(n)){
+    if(n[i] > n[j]){
+      n[c(i,j)]=n[c(j,i)]
+    }
+  }
+}
+c1 <- length(n)
+if((c1)%%2==0){
+  Q2 <- (n[(c1%/%2)]+n[(c1%/%2)+1])/2
+}else{
+  Q2 <- n[c1%/%2+1]
+}
+v1 <- n[c(1:(c1%/%2))]
+v3 <- n[c(((c1%/%2)+1):c1)]
+print(v1)
+print(v3)
+c1=length(v1)
+if((c1)%%2==0){
+  Q1 <- (v1[(c1%/%2)]+v1[(c1%/%2)+1])/2
+}else{
+  Q1 <- v1[c1%/%2+1]
+}
+c3=length(v3)
+print(v3)
+if((c3)%%2==0){
+  Q3 <- (v3[(c3%/%2)]+v3[(c3%/%2)+1])/2
+}else{
+  Q3 <- v3[c3%/%2+1]
+}
+print(paste("First quartile Q1=",Q1))
+print(paste("Second quartile Q2=",Q2))
+print(paste("Third quartile Q3=",Q3))
+Quartile=(Q3-Q1)/2
+print(paste("The quartile deviation :",Quartile))
+
+
+OR
+
+
+print("enter data")
+n <- scan()
+for(i in 1:(length(n)-1)){
+  for(j in (i+1):length(n)){
+    if(n[i] > n[j]){
+      t=n[i]
+      n[i]=n[j]
+      n[j]=t
+    }
+  }
+}
+c1 <- length(n)
+if(c1%%2==0){
+  Q1 <- n[c1%/%4]
+  Q3 <- n[(3*c1)%/%4]
+}else{
+  Q1 <- n[(c1+1)%/%4]
+  Q3 <- n[(3*(c1+1))%/%4]
+}
+print(Q1)
+print(Q3)
+Q=(Q3-Q1)/2
+print(Q)
