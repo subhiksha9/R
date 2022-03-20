@@ -1,0 +1,71 @@
+#t-test for one mean
+print("Enter data")
+data <- scan()
+print("Enter sample mean :")
+mu <- scan()
+print("Enter level of significance :")
+alpha <- scan()
+print("1:Two tail test 2:One tail greater 3:One tail less")
+p <- scan()
+n <- length(data)
+mean <- sum(data)/n
+variance <- sum((data-mean)**2)/(n-1)
+s <- sqrt(variance)
+print(paste("Mean : ",round(mean,digits = 5)))
+print(paste("Standard deviation : ",round(s,digits = 5)))
+if(p==1){
+  result <- t.test(data,mu=mu)
+  tablevalue <- qt(1-alpha/2,df=n-1)
+}else if(p==2){
+  result <- t.test(data,mu=mu,alternative = "greater")
+  tablevalue <- qt(1-alpha,df=n-1)
+}else{
+  result <- t.test(data,mu=mu,alternative = "less")
+  tablevalue <- qt(alpha,df=n-1)
+}
+print("Caluculated Value : ")
+print(result)
+print(paste("Table value : ",round(tablevalue,digits = 5)))
+if(result[1]<tablevalue){
+  print("H0 is accepted")
+}else{
+  print("H0 is rejected")
+}
+
+
+#2
+print("Enter sample mean :")
+mu <- scan()
+print("Enter sample size :")
+n <- scan()
+print("Enter mean :")
+mean <- scan()
+print("Enter Standarad deviation :")
+s <- scan()
+t <- (mean-mu)/(s/sqrt(n))
+tablevalue <- qt(0.01,df=n-1)
+print(paste("Calculated Value : ",round(t,digits = 5)))
+print(paste("Table Vlue :",round(tablevalue,digits = 5)))
+if(t>tablevalue){
+  print("H0 is accepted")
+}else{
+  print("H0 is rejected")
+}
+
+
+#3 confidence
+print("Enter data :")
+data <- scan()
+print("Enter confidence :")
+c <- scan()
+n <- length(data)
+mean <- sum(data)/n
+variance <- sum((data-mean)**2)/(n-1)
+s <- sqrt(variance)
+print(paste("Mean : ",round(mean,digits = 5)))
+print(paste("Standard deviation : ",round(s,digits = 5)))
+t <- qt((1-c)/2,n-1)
+limit1 <- round(mean-(t*(s/sqrt(n))),digits = 5)
+limit2 <- round(mean+(t*(s/sqrt(n))),digits = 5)
+print("Confident Limits are:")
+print(paste0("[",limit2,",",limit1,"]"))
