@@ -1,0 +1,5 @@
+m <- matrix(1:6,nrow=2,ncol=3)
+m
+r <- c(7,8,9)
+k <- rbind(m,r)
+k
