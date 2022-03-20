@@ -1,0 +1,17 @@
+#Mean Deviation
+n <- scan()
+sum1 <- 0
+c=length(n)
+for(i in n){
+  sum1=sum1+i
+}
+print(sum1)
+mean <- sum1/c
+print(paste("mean :",mean))
+sum2 <- 0
+for(i in n){
+  sum2=sum2+abs(i-mean)
+}
+print(sum2)
+mean_deviation <- sum2/c
+print(paste("Mean deviation :",mean_deviation))
