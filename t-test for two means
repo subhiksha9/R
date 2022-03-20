@@ -1,0 +1,41 @@
+#t-test for two means
+print("Enter first data")
+x <- scan()
+print("Enter second data")
+y <- scan()
+print("Enter Level of Significance")
+alpha <- scan()
+print("1:Two tail test 2:One tail greater 3:One tail less")
+p <- scan()
+n1 <- length(x)
+n2 <- length(y)
+meanx <- round(sum(x)/n1,digits = 1)
+meany <- round(sum(y)/n2,digits = 1)
+print(paste("Mean1 = ",meanx))
+print(paste("Mean2 = ",meany))
+x2 <- (x-meanx)^2
+print(sum(x2))
+print(sum(y2))
+y2 <- ((y-meany)^2)
+variance <- (sum(x2)+sum(y2))/(n1+n2-2)
+s <- sqrt(variance)
+print(paste("Standarad Deviation :",round(s,digits = 5)))
+if(p==1){
+  result <- t.test(x,y)
+  tablevalue <- qt(1-alpha/2,df=n1+n2+-2)
+}else if(p==2){
+  result <- t.test(x,y,alternative = "greater")
+  tablevalue <- qt(1-alpha,df=n1+n2+-2)
+}else{
+  result <- t.test(x,y,alternative = "less")
+  tablevalue <- qt(alpha,df=n1+n2+-2)
+}
+print("Calculated Value : ")
+print(result)
+print("Table Value : ")
+print(tablevalue)
+if(result[1]<tablevalue){
+  print("H0 is accepted")
+}else{
+  print("H0 is rejected")
+}
