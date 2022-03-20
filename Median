@@ -1,0 +1,16 @@
+#median of numbers
+me <- function(m){
+  x <- length(m)
+  if(x%%2==0){
+    mid <- m[x%/%2]+m[(x%/%2)+1]
+    return(mid/2)
+  }else{
+    mid <- m[(x%/%2)+1]
+    return(mid)
+  }
+}
+med=scan()
+m <- sort(med)
+median <- me(m)
+print(median)
+median(med)
