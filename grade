@@ -1,0 +1,13 @@
+print("enter percentage :")
+n <- scan()
+if(n>90){
+  print("grade a")
+} else if(n>80 && n<=90) {
+  print("grade b")
+} else if(n>70 && n<=80) {
+  print("grade c")
+} else if(n>40 && n<=70) {
+  print("grade d")
+} else if(n<=40) {
+  print("grade f")
+}
