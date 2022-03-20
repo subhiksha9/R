@@ -1,0 +1,31 @@
+#Fit a Binomial Distribution and test goodness of fit
+x <- c(0,1,2,3,4,5,6)
+f <- c(7,6,19,35,30,23,7)
+fx <- f*x
+N <- sum(f)
+print(paste("Total frequency",N))
+Mean <- sum(fx)/N
+print(paste("Mean of the given distribution",Mean))
+n=x[length(x)]
+print(paste("Size of the table",n))
+p <- Mean/n
+P <- dbinom(x,size=n,prob=p)
+Px <- round(P,digits=5)
+print("Binomial Distribution:")
+print(Px)
+NPx <- Px*N
+NPx1 <- round(NPx,digits=0)
+Table <- data.frame(x,f,fx,Px,NPx,NPx1)
+print(Table)
+sums <- c(NA,N,sum(fx),NA,NA,sum(NPx1))
+Table <- rbind(Table,sums)
+print(Table)
+result <- chisq.test(f,p=P,rescale.p = TRUE)
+tablevalue <- qchisq(0.95,df=n)
+print(paste("Calculated Value = ",result[1]))
+print((paste("Table Value = ",tablevalue)))
+if(result[1]<tablevalue){
+  print("H0 is accepted.Data fit Binomial Distribtion")
+}else{
+  print("H0 is rejected.Data does not fit Binomial Distribtion")
+}
