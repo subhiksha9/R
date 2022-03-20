@@ -1,0 +1,25 @@
+#Fit a Normal Distribution
+x <- c(1,3,5,7,9)
+y <- c(3,5,7,9,11)
+f <- c(1,4,6,4,1)
+xi <- (x+y)/2
+fxi <- f*xi
+N <- sum(f)
+print(paste("Total frequency",N))
+Mean <- sum(fxi)/N
+print(paste("Mean = ",Mean))
+xi2 <- (xi-Mean)^2
+fxi2 <- f*xi2
+variance <- sum(fxi2)/N
+S_D <- sqrt(variance)
+print(paste("Standard Deviation = ",S_D))
+z1 <- pnorm(x,Mean,S_D)
+z2 <- pnorm(y,Mean,S_D)
+z <- z2-z1
+z <- round(z,digits = 5)
+NZ <- N*z
+NZ1 <- round(NZ,digits = 0)
+Table <- data.frame(x,y,xi,f,fxi,fxi2,z1,z2,z,NZ,NZ1)
+print(Table)
+result <- chisq.test(f,p=z,rescale.p = TRUE)
+print(result)
