@@ -1,0 +1,30 @@
+#Fit a Poisson Distribution and test goodness of fit
+x <- c(0,1,2,3,4)
+f <- c(211,90,19,5,0)
+fx <- f*x
+N <- sum(f)
+print(paste("Total frequency",N))
+Mean <- sum(fx)/N
+print(paste("Mean of the given distribution",Mean))
+n=x[length(x)]
+print(paste("Size of the table",n))
+P <- dpois(x,lambda=Mean)
+Px <- round(P,digits=5)
+print("Poisson Distribution:")
+print(Px)
+NPx <- Px*N
+NPx1 <- round(NPx,digits=0)
+Table <- data.frame(x,f,fx,Px,NPx,NPx1)
+print(Table)
+sums <- c(NA,N,sum(fx),NA,NA,sum(NPx1))
+Table <- rbind(Table,sums)
+print(Table)
+result <- chisq.test(f,p=P,rescale.p = TRUE)
+tablevalue <- qchisq(0.95,df=n)
+print(paste("Calculated Value = ",result[1]))
+print((paste("Table Value = ",tablevalue)))
+if(result[1]<tablevalue){
+  print("H0 is accepted.Data fit Poisson Distribtion")
+}else{
+  print("H0 is rejected.Data does not the Poisson Distribtion")
+}
