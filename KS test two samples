@@ -1,0 +1,15 @@
+#Kolmogorov-Smirnov test Two Sample
+print("Enter Before data :")
+x <- scan()
+print("Enter After data :")
+y <- scan()
+print("Enter level of significance :")
+alpha <- scan()
+result <- ks.test(x,y,paired=TRUE)
+print(result)
+print(paste("Value of p:",round(result$p.value,5)))
+if(result$p.value>alpha){
+  print("H0 is Accepected")
+}else{
+  print("H0 is rejected")
+}
