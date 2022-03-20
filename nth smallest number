@@ -1,0 +1,4 @@
+v <- scan()
+n <- scan()
+z <- sort(v)
+print(z[n])
