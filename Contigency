@@ -1,0 +1,29 @@
+#Fit a Contingency Distribution and test goodness of fit
+print("Enter number of rows")
+r <- scan()
+print("Enter number of columns")
+c <- scan()
+m <- matrix(c(23,28,9,60,79,49,29,60,63),r,c)
+dimnames(m) <- list(c("Poor","Avg","Very good"),
+                    c("Below Avg.","Avg.","Above Avg."))
+print(m)
+Rsum <- rowSums(m)
+m1 <- cbind(m,Rsum)
+Csum <- colSums(m1)
+m1 <- rbind(m1,Csum)
+print(m1)
+Tsum <- sum(m)
+print(paste("Total sum =",Tsum))
+result <- chisq.test(m)
+print(result$expected)
+#degree of freedom
+v <- (r-1)*(c-1)
+tablevalue <- qchisq(0.95,df=v)
+print("Caluculated Value :")
+print(result)
+print(paste("Table Value : ",round(tablevalue,5)))
+if(result[1]<tablevalue){
+  print("H0 is accepted.")
+}else{
+  print("H0 is rejected.")
+}
