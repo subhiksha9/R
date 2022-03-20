@@ -1,0 +1,10 @@
+setwd("C:/Users/Admin/Documents")
+getwd()
+a<-read.csv("moviesdata.csv")
+View(a)
+sub<-a[c(1:10),c(2,5,14)]
+sub
+pie(sub$imdb_rating,col="red",labels=a$title)
+plot(sub$imdb_rating,sub$runtime)
+hist(sub$runtime,xlab="movies",col="blue")
+barplot(sub$imdb_rating,names.arg=sub$title)
