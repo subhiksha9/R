@@ -1,0 +1,15 @@
+#Standard deviation
+print("Enter data")
+n <- scan()
+sum1 <- 0
+sum2 <- 0
+c=length(n)
+for(i in n){
+  sum1 <- sum1+i
+  sum2 <- sum2+i*i
+}
+mean <- sum1/c
+print(paste("mean :",mean))
+variance <- (sum2/c)-(mean*mean)
+Standard_devaition <- sqrt(variance)
+print(paste("Standard deviation :",Standard_devaition))
