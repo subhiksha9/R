@@ -1,0 +1,16 @@
+n<-scan()
+c=vector()
+for (i in 1:9) {
+c[i]=0
+}
+while(n>0)
+{
+d=n%%10
+c[d]=c[d]+1
+n=n%/%10
+}
+c
+for(i in 1:length(c))
+{
+print(paste('frequency of',i,'is',c[i]))
+}
