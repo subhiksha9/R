@@ -1,0 +1,13 @@
+#Kolmogorov-Smirnov test One Sample
+print("Enter data :")
+x <- scan()
+print("Enter level of significance :")
+alpha <- scan()
+result <- ks.test(x,"punif")
+print(result)
+print(paste("Value of p:",round(result$p.value,5)))
+if(result$p.value>alpha){
+  print("H0 is Accepected")
+}else{
+  print("H0 is rejected")
+}
