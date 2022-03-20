@@ -1,0 +1,15 @@
+#wilcoxon signed rank test for one sample
+print("Enter data :")
+x <- scan()
+print("Enter sample mean :")
+mu <- scan()
+print("Enter level of significance :")
+alpha <- scan()
+result <- wilcox.test(x,mu,alternative = "two.sided")
+print(result)
+print(paste("Value of p:",round(result$p.value,5)))
+if(result$p.value>alpha){
+  print("H0 is Accepected")
+}else{
+  print("H0 is rejected")
+}
