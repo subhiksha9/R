@@ -1,0 +1,9 @@
+#Harmonic mean
+x <- scan()
+n <- length(x)
+sum <- 0
+for(i in x){
+  sum <- sum+(1/i)
+}
+Harmonic=n/sum
+print(paste("Harmonic Mean :",Harmonic))
