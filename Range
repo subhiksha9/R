@@ -1,0 +1,15 @@
+print("enter data")
+n <- scan()
+print(n)
+for(i in 1:(length(n)-1)){
+  for(j in (i+1):length(n)){
+    if(n[i] > n[j]){
+      n[c(i,j)]=n[c(j,i)]
+    }
+  }
+}
+print(paste("Largest number",n[length(n)]))
+print(paste("Samllest number",n[1]))
+range=n[length(n)]-n[1]
+print("The measure of dispersion Range :")
+print(range)
