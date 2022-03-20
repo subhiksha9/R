@@ -1,0 +1,38 @@
+#F-test test for two variances/two s.d
+print("Enter sample1 population")
+x <- scan()
+print("Enter sample2 population")
+y <- scan()
+print("Enter level of significance")
+alpha <- scan()
+#print("Enter 1:Two tail 2:one tail")
+#p <- scan()
+n1 <- length(x)
+n2 <- length(y)
+meanx <- sum(x)/n1
+meany <- sum(y)/n2
+Sx2 <- sum((x-meanx)^2)/(n1-1)
+Sy2 <- sum((y-meany)^2)/(n2-1)
+if(Sx2>Sy2){
+  f <- Sx2/Sy2
+}else{
+  f <- Sy2/Sx2
+}
+print(paste("Variance of sample1:",round(Sx2,digits = 5)))
+print(paste("Variance of sample2:",round(Sy2,digits = 5)))
+result <- var.test(x,y)
+print("Two tailed test")
+if(Sx2>Sy2){
+  tablevalue <- qf(1-alpha,n1-1,n2-1)
+}else{
+  tablevalue <- qf(1-alpha,n2-1,n1-1)
+}
+print("Calculated value :")
+print(result)
+print("Table value :")
+print(round(tablevalue,digits = 5))
+if(result[1]<tablevalue){
+  print("H0 is Accepted")
+}else{
+  print("H0 is rejected")
+}
