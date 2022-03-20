@@ -1,0 +1,15 @@
+#Mann-Whitney test or U-test
+print("Enter data1 :")
+x <- scan()
+print("Enter data2 :")
+y <- scan()
+print("Enter level of significance")
+alpha <- scan()
+result <- wilcox.test(x,y,alternative = "two.sided")
+print(result)
+print(paste("Value of p:",round(result$p.value,5)))
+if(result$p.value>alpha){
+  print("H0 is Accepected")
+}else{
+  print("H0 is rejected")
+}
