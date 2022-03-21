@@ -1,0 +1,24 @@
+getwd()
+movie <- read.csv("moviesdata.csv",header=T,sep=',')
+View(movie)
+#barplot
+x <- movie$title
+x
+y <- (movie$imdb_rating)
+y
+
+barplot(y,col='red',names.arg=x,las=2,ylim=c(0,10),xlim=c(0,50))
+
+plot(y,type='o',xlim=c(0,100),col='blue')
+
+hist(y,ylim=c(0,200),xlim=c(0,10),col='red')
+
+
+z <- table(movie$mpaa_rating)
+z
+p1 <- round(100*z/sum(z),1)
+p1
+pie(z,label=p1,col=rainbow(length(z)))
+
+
+plot(y,col='red')
